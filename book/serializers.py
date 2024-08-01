@@ -4,14 +4,22 @@ from rest_framework import serializers
 
 class BookModelSerializer(serializers.ModelSerializer):
     category = serializers.CharField(source='category.title')
-    author = serializers.CharField(source = 'author.name')
+    author_name = serializers.SerializerMethodField()
+
+    def get_author_name(self,instance):
+        authors = Author.objects.all().filter(book = instance)
+        author_names = []
+
+        for author in authors:
+            author_names.append(author.name)
+        return author_names
 
     
 
 
     class Meta:
         model = Book
-        fields = ['title','category','author']
+        fields = ['title','category','author_name']
     
 
    

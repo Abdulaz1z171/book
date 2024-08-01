@@ -29,7 +29,7 @@ class Author(models.Model):
 
 class Book(models.Model):
     title = models.CharField(max_length=255)
-    author = models.ManyToManyField(Author,related_name='books')
+    author = models.ManyToManyField(Author)
     category = models.ForeignKey(Category, on_delete= models.CASCADE,related_name='books')
 
     def __str__(self):

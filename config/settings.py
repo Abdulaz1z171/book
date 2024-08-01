@@ -62,6 +62,23 @@ INTERNAL_IPS = [
 ]
 ROOT_URLCONF = 'config.urls'
 
+# For Cache
+CACHES = {
+    'default': {
+         # Kompyuterni xotirasida saqlaydigan kesh
+        # 'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        # 'LOCATION': 'unique-snowflake',
+        
+    #     Fileda saqlaydigan kesh
+        # 'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        # 'LOCATION': 'E:/Kurs_8_module_projects/Api_homeworks/Book/cache_file',
+
+        # Database cache
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'my_cache_table',
+    }
+}
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
